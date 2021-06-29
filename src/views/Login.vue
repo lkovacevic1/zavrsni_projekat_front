@@ -32,10 +32,9 @@ export default {
         email: this.email,
         lozinka: this.lozinka,
       }).then(response => {
-        //console.log(Vue.cookie.get("myCookie"))
         console.log(response)
         localStorage.setItem('jwt', response.data.jwt)
-        //VueCookies.set(response)
+        this.$cookies.set(response.date.name, response.date.value, "-1")
         this.$router.push({name: 'News'})
       })
     }
