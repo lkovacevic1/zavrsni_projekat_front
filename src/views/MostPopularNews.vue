@@ -1,6 +1,17 @@
 <template>
   <div class="subjects">
-    <h1 class="mt-4">10 most popular news</h1>
+
+    <div class="row">
+      <div class="col-4">
+        <h1>10 most popular news</h1>
+      </div>
+      <div class="col-8 my-auto">
+        <form @submit.prevent="searchNews">
+          <input v-model="tekst" type="text">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col-12">
@@ -64,6 +75,9 @@ export default {
     },
     getNews(id){
       this.$router.push(`/homePage/wholeNews/${id}`);
+    },
+    searchNews(){
+      this.$router.push(`/news/${this.tekst}`);
     }
   },
   data() {
@@ -72,6 +86,7 @@ export default {
       idCategory: 1,
       news: [],
       categories: [],
+      tekst: ''
     }
   },
   mounted() {

@@ -6,8 +6,8 @@
         <h1>10 latest news</h1>
       </div>
       <div class="col-8 my-auto">
-        <form @submit.prevent="categoryNews">
-          <input type="text">
+        <form @submit.prevent="searchNews">
+          <input v-model="tekst" type="text">
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
@@ -66,7 +66,8 @@ export default {
       selectedNews: null,
       idCategory: 1,
       news: [],
-      categories: []
+      categories: [],
+      tekst: ''
     }
   },
   methods:{
@@ -79,6 +80,9 @@ export default {
     },
     getNews(id){
       this.$router.push(`/homePage/wholeNews/${id}`);
+    },
+    searchNews(){
+      this.$router.push(`/news/${this.tekst}`);
     }
   },
   mounted() {

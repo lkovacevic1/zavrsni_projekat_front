@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import VueCookies from 'vue-cookies'
 
 export default {
   name: "Login",
@@ -33,8 +32,10 @@ export default {
         email: this.email,
         lozinka: this.lozinka,
       }).then(response => {
+        //console.log(Vue.cookie.get("myCookie"))
+        console.log(response)
         localStorage.setItem('jwt', response.data.jwt)
-        VueCookies.set('myCookie' , 'admin', "1h")
+        //VueCookies.set(response)
         this.$router.push({name: 'News'})
       })
     }
